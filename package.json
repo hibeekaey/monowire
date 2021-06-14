@@ -1,0 +1,18 @@
+{
+  "name": "monowire",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hibeekaey/monowire.git"
+  },
+  "author": "Ibukun Dairo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hibeekaey/monowire/issues"
+  },
+  "homepage": "https://github.com/hibeekaey/monowire#readme"
+}
