@@ -1,32 +1,31 @@
 {
   "name": "monowire",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "monowire": "bin/monowire"
+  },
   "scripts": {
-    "start": "node build/index.js",
-    "dev": "ts-node-dev src/index.ts",
-    "prebuild": "rm -r build",
-    "build": "babel --extensions \".ts\" src -d build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev -q --rs --respawn --trace-warnings -- src/index.ts",
+    "build": "tsc -b",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "tsc -b --clean"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hibeekaey/monowire.git"
   },
-  "author": "Ibukun Dairo",
+  "author": "Ibukun Dairo <ibukun.o.dairo@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hibeekaey/monowire/issues"
   },
   "homepage": "https://github.com/hibeekaey/monowire#readme",
   "devDependencies": {
-    "@babel/cli": "^7.14.5",
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.5",
-    "@babel/preset-typescript": "^7.14.5",
-    "@tsconfig/node16": "^1.0.1",
-    "ts-node": "^10.0.0",
-    "ts-node-dev": "^1.1.1",
-    "typescript": "^4.3.2"
+    "@types/node": "^16.11.6",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.4"
   }
 }
