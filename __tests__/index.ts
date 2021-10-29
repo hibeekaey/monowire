@@ -6,5 +6,5 @@ it("should return the average of two numbers", function () {
 });
 
 it("should create new `Application` instance", function () {
-  assert.fail(new Application());
+  assert.ok(new Application());
 });
