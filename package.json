@@ -1,6 +1,6 @@
 {
   "name": "monowire",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -21,7 +21,8 @@
     "prettier:fix": "npm run prettier:cli -- --write",
     "eslint": "eslint --report-unused-disable-directives .",
     "eslint:fix": "npm run eslint -- --fix",
-    "clean": "tsc -b --clean"
+    "clean": "tsc -b --clean",
+    "prepare": "husky install"
   },
   "dependencies": {
     "tslib": "^2.3.1"
@@ -36,15 +37,9 @@
     "url": "https://github.com/hibeekaey/monowire/issues"
   },
   "homepage": "https://github.com/hibeekaey/monowire#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm --no-git-tag-version version patch && git add package*.json"
-    }
-  },
   "lint-staged": {
-    "src/**/*.{ts,js,json}": [
-      "prettier --write"
-    ]
+    "*.{ts,js}": "eslint --cache --fix",
+    "*.{ts,js,html,css,md}": "prettier --write"
   },
   "devDependencies": {
     "@types/mocha": "^9.0.0",
