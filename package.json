@@ -8,9 +8,9 @@
   },
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "ts-node-dev -q --rs --respawn --trace-warnings -- src/index.ts",
+    "dev": "ts-node-dev --cls --exit-child --rs --respawn --trace-warnings --trace-deprecation --abort-on-uncaught-exception -- src/index.ts",
     "build": "tsc -b",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -r ts-node/register --exit --timeout 10000 '__tests__/**/*.ts'",
     "clean": "tsc -b --clean"
   },
   "repository": {
@@ -24,8 +24,11 @@
   },
   "homepage": "https://github.com/hibeekaey/monowire#readme",
   "devDependencies": {
+    "@types/mocha": "^9.0.0",
     "@types/node": "^16.11.6",
+    "mocha": "^9.1.3",
     "ts-node-dev": "^1.1.8",
+    "tslib": "^2.3.1",
     "typescript": "^4.4.4"
   }
 }
