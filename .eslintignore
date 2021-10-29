@@ -1,4 +1,5 @@
 node_modules
+bin
 dist
 .nyc_output
 coverage

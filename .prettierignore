@@ -5,5 +5,3 @@ coverage
 
 tsconfig.tsbuildinfo
 .eslintrc.js
-
-*.json
