@@ -12,6 +12,13 @@
     "build": "tsc -b",
     "test": "mocha -r ts-node/register --extension ts --exit --timeout 10000 '__tests__/**/*.ts'",
     "test:coverage": "nyc --reporter=html --reporter=text --check-coverage --lines 80 npm test",
+    "lint": "npm run prettier:check && npm run eslint",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
     "clean": "tsc -b --clean"
   },
   "repository": {
@@ -27,9 +34,13 @@
   "devDependencies": {
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
     "cross-env": "^7.0.3",
+    "eslint": "^8.1.0",
     "mocha": "^9.1.3",
     "nyc": "^15.1.0",
+    "prettier": "^2.4.1",
     "ts-node-dev": "^1.1.8",
     "tslib": "^2.3.1",
     "typescript": "^4.4.4"

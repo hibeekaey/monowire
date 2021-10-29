@@ -3,7 +3,7 @@ import { sealed, first } from "./decorators";
 @sealed
 export default class Application {
   constructor() {
-    console.log("Hurray")!;
+    console.log("Hurray");
   }
   /**
    * Returns the average of two numbers.
