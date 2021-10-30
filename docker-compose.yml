@@ -1,6 +1,7 @@
 services:
-  backend:
+  monowire:
     image: backend
+    build: .
     command: |
       npx nodemon dist/index.js
     ports:
