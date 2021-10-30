@@ -1,6 +1,6 @@
 {
   "name": "monowire",
-  "version": "1.0.17",
+  "version": "1.0.21",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -13,7 +13,11 @@
     "test": "mocha -r ts-node/register --extension ts --exit --timeout 10000 '__tests__/**/*.ts'",
     "test:coverage": "nyc --reporter=html --reporter=text --check-coverage --lines 80 npm test",
     "docker:build": "docker build -t backend .",
-    "docker:run": "docker run -p 5000:5000 -d backend",
+    "docker:run": "docker run --name monowire -p 5000:5000 -d backend",
+    "docker:start": "docker-compose up",
+    "predocker:watch": "npm run docker:build",
+    "docker:watch": "concurrently \"npm run build -- -w\" \"npm run docker:start\"",
+    "docker:stop": "docker-compose down",
     "lint": "npm run prettier:check && npm run eslint",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
     "prettier:cli": "prettier \"**/*.ts\" \"**/*.js\"",
@@ -46,6 +50,7 @@
     "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
+    "concurrently": "^6.3.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.1.0",
     "husky": "^7.0.4",
