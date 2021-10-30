@@ -8,6 +8,7 @@ tsconfig.tsbuildinfo
 .eslintcache
 
 *.tgz
+*.js.map
 
 __tests__
 .github
