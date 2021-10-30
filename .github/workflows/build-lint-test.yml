@@ -10,7 +10,7 @@ on:
     branches: [develop]
 
 jobs:
-  build:
+  build_lint_test:
     runs-on: ubuntu-latest
 
     strategy:
