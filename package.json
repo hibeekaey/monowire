@@ -1,6 +1,6 @@
 {
   "name": "monowire",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -22,7 +22,7 @@
     "eslint": "eslint --report-unused-disable-directives .",
     "eslint:fix": "npm run eslint -- --fix",
     "clean": "tsc -b --clean",
-    "prepare": "husky install"
+    "prepare": "husky install || true"
   },
   "dependencies": {
     "tslib": "^2.3.1"
