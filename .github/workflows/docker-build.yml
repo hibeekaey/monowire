@@ -7,7 +7,7 @@ on:
     branches: [develop]
 
 jobs:
-  docker_build:
+  build-docker:
     runs-on: ubuntu-latest
 
     steps:
