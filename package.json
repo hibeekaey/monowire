@@ -1,6 +1,6 @@
 {
   "name": "monowire",
-  "version": "1.0.0",
+  "version": "1.0.15",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -8,10 +8,24 @@
   },
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "ts-node-dev -q --rs --respawn --trace-warnings -- src/index.ts",
+    "dev": "cross-env DEBUG=monowire ts-node-dev --cls --exit-child --rs --respawn --trace-warnings --trace-deprecation --abort-on-uncaught-exception -- src/index.ts",
     "build": "tsc -b",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "tsc -b --clean"
+    "test": "mocha -r ts-node/register --extension ts --exit --timeout 10000 '__tests__/**/*.ts'",
+    "test:coverage": "nyc --reporter=html --reporter=text --check-coverage --lines 80 npm test",
+    "docker:build": "docker build -t backend .",
+    "docker:run": "docker run -p 5000:5000 -d backend",
+    "lint": "npm run prettier:check && npm run eslint",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "clean": "tsc -b --clean",
+    "prepare": "husky install || true"
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
   },
   "repository": {
     "type": "git",
@@ -23,8 +37,22 @@
     "url": "https://github.com/hibeekaey/monowire/issues"
   },
   "homepage": "https://github.com/hibeekaey/monowire#readme",
+  "lint-staged": {
+    "*.{ts,js}": "eslint --cache --fix",
+    "*.{ts,js,html,css,md}": "prettier --write"
+  },
   "devDependencies": {
+    "@types/mocha": "^9.0.0",
     "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.1.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "mocha": "^9.1.3",
+    "nyc": "^15.1.0",
+    "prettier": "^2.4.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.4"
   }

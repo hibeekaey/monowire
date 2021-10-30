@@ -1,22 +1,9 @@
-function sealed(target: any) {
-  console.log("sealed(): called");
-}
-
-function first() {
-  console.log("first(): factory evaluated");
-  return function (
-    target: any,
-    propertyKey: string,
-    descriptor: PropertyDescriptor
-  ) {
-    console.log("first(): called", descriptor);
-  };
-}
+import { sealed, first } from "./decorators";
 
 @sealed
 export default class Application {
   constructor() {
-    console.log("Hurray")!;
+    console.log("Hurray");
   }
   /**
    * Returns the average of two numbers.
