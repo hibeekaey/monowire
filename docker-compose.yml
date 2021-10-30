@@ -1,0 +1,10 @@
+services:
+  backend:
+    image: backend
+    command: |
+      npx nodemon dist/index.js
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./dist:/home/node/app/dist
+      - ./public:/home/node/app/public
