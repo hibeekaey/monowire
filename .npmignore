@@ -24,4 +24,5 @@ src
 .prettierignore
 .prettierrc
 Dockerfile
+docker-compose.yml
 tsconfig.json
