@@ -1,6 +1,6 @@
 {
   "name": "monowire",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -14,9 +14,10 @@
     "test:coverage": "nyc --reporter=html --reporter=text --check-coverage --lines 80 npm test",
     "docker:build": "docker build -t backend .",
     "docker:run": "docker run --name monowire -p 5000:5000 -d backend",
-    "docker:start": "docker-compose up",
+    "predocker:start": "npm run docker:build",
+    "docker:start": "docker-compose up -d",
     "predocker:watch": "npm run docker:build",
-    "docker:watch": "concurrently \"npm run build -- -w\" \"npm run docker:start\"",
+    "docker:watch": "concurrently \"npm run build -- -w\" \"docker-compose up\"",
     "docker:stop": "docker-compose down",
     "lint": "npm run prettier:check && npm run eslint",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
